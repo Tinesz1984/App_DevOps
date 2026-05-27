@@ -100,7 +100,8 @@ SECRET_KEY=super_secret_prod_key_change_me
 <img width="640" height="590" alt="image" src="https://github.com/user-attachments/assets/3e797136-b91e-4179-b066-26fd5fd353b7" />
 
 И поднимаем приложение `docker compose up -d`: 
-<img width="638" height="114" alt="image" src="https://github.com/user-attachments/assets/5b65fdcc-ea10-4c6e-92a9-534100f0bcd4" 
+
+<img width="638" height="114" alt="image" src="https://github.com/user-attachments/assets/5b65fdcc-ea10-4c6e-92a9-534100f0bcd4" />
 
 Переходим на `http://localhost:5001`. Наше приложение работает и запущено внутри контейнера!
 
