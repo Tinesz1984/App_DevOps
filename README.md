@@ -14,22 +14,29 @@ gunicorn>=22.0.0
 
 Далее, в корневой папке создаем `Dockerfile` с содержимым: 
 ```
-FROM python:3.12-slim 
-
-WORKDIR /app
+FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y curl gcc && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY app/requirements.txt .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --upgrade pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 COPY app/ .
 
 EXPOSE 5001
 
-CMD ["gunicorn", "--bind", "0.0.0.0:5001", "app:app"]
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost:5001 || exit 1
+
+CMD ["gunicorn", "--workers", "2", "--bind", "0.0.0.0:5001", "app:app"]
 ```
 
 Фиксируем версию Python 3.12 - у нее маленький размер, быстрый ci/cd и меньше уязвимостей. 
