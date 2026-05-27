@@ -111,5 +111,9 @@ SECRET_KEY=super_secret_prod_key_change_me
 
 `stage: deploy` --- подключается к серверу по SSH, скачивает новый Docker image, останавливает контейнер, запускает новый. 
 
-На сайте GitLab создаем репозиторий, а в папку с приложением инициализируем git через команду `git init`, добавляем файлы, делаем первый коммит `git commit -m "Initial DevOps setup"`, затем подключаем GitLab remote `git remote add origin https://gitlab.com/tinesz1984-group/habitquest.git`, переключаемся на main `git branch -M main` и отправляем проект в GitLab `git push -u origin main`
+На сайте GitLab создаем репозиторий, а в папку с приложением инициализируем git через команду `git init`, добавляем файлы, делаем первый коммит `git commit -m "Initial DevOps setup"`, затем подключаем GitLab remote `git remote add origin https://gitlab.com/tinesz1984-group/habitquest.git`, переключаемся на main `git branch -M main` и отправляем проект в GitLab `git push -u origin main`. Собственно, теперь наш проект на GitLab. 
+<img width="1102" height="638" alt="image" src="https://github.com/user-attachments/assets/0e00ef7e-f053-4bc0-b1bd-e193f2a95d86" />
+
+Но, как мы видим, с деплоем, все таки, что-то не так. Кажется, я забыла что у нашего проекта нет сервера. поправим немного наш ci/cd
+
 
