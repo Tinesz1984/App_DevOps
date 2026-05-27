@@ -89,4 +89,27 @@ __MACOSX/
 ```
 SECRET_KEY=super_secret_prod_key_change_me
 ```
-Теперь переходим в корень проекта и приступаем непосредственно к сборке контейнера 
+Теперь переходим в корень проекта и приступаем непосредственно к сборке контейнера. Запускаем `docker compose build`:
+<img width="640" height="590" alt="image" src="https://github.com/user-attachments/assets/3e797136-b91e-4179-b066-26fd5fd353b7" />
+
+И поднимаем приложение `docker compose up -d`: 
+<img width="638" height="114" alt="image" src="https://github.com/user-attachments/assets/5b65fdcc-ea10-4c6e-92a9-534100f0bcd4" 
+
+Переходим на `http://localhost:5001`. Наше приложение работает и запущено внутри контейнера!
+
+<img width="736" height="710" alt="image" src="https://github.com/user-attachments/assets/a4e48b27-27a2-4120-bf21-b29c10c0d845" />
+
+Чтобы остановить работу можно воспользоваться командой `docker compose down`.
+
+---
+
+# GitLab CI/CD
+
+Теперь реализуем автоматическую сборку. Создаем файол `.gitlab-ci.yml`. Разберем этот pipeline по частям: 
+
+`stage: build` --- Собирает Docker image, пушит image в GitLab Container Registry. 
+
+`stage: deploy` --- подключается к серверу по SSH, скачивает новый Docker image, останавливает контейнер, запускает новый. 
+
+На сайте GitLab создаем репозиторий, а в папку с приложением инициализируем git через команду `git init`, добавляем файлы, делаем первый коммит `git commit -m "Initial DevOps setup"`, затем подключаем GitLab remote `git remote add origin https://gitlab.com/tinesz1984-group/habitquest.git`, переключаемся на main `git branch -M main` и отправляем проект в GitLab `git push -u origin main`
+
