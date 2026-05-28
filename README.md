@@ -123,6 +123,9 @@ SECRET_KEY=super_secret_prod_key_change_me
 <img width="1140" height="679" alt="image" src="https://github.com/user-attachments/assets/3ce2b4b2-2584-42e4-8761-29dc46ae9090" />
 
 
-Но, как мы видим, с деплоем, все таки, что-то не так. Кажется, я забыла что у нашего проекта нет сервера. поправим немного наш ci/cd
+Но, как мы видим, с деплоем, все таки, что-то не так. Кажется, я забыла что у нашего проекта нет сервера. поправим немного наш ci/cd.
+
+<img width="899" height="454" alt="image" src="https://github.com/user-attachments/assets/c2cea966-b55a-4191-b77d-73ca8d874abc" />
+
 
 
